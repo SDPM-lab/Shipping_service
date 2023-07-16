@@ -3,19 +3,21 @@
 namespace App\Models\v1;
 
 use CodeIgniter\Model;
-use App\Entities\v1\OrderProductEntity;
+use App\Entities\v1\HistoryEntity;
 
-class OrderProductModel extends Model
+class HistoryModel extends Model
 {
     protected $DBGroup          = USE_DB_GROUP;
-    protected $table            = 'order_product';
-    protected $primaryKey       = array('o_key','p_key');
+    protected $table            = 'history';
+    protected $primaryKey       = 'h_key';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
-    protected $returnType       = OrderProductEntity::class;
+    protected $returnType       = HistoryEntity::class;
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['o_key','p_key','price'];
+    protected $allowedFields    = [
+        'h_key', 's_key', 'o_key', 'status', 'created_at', 'updated_at', 'deleted_at'
+    ];
 
     // Dates
     protected $useTimestamps = true;

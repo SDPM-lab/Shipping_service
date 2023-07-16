@@ -41,11 +41,11 @@ $routes->group(
         'filter'    => 'user'
     ],
     function (\CodeIgniter\Router\RouteCollection $routes) {
-        $routes->get('order', 'OrderController::index');
-        $routes->get('order/(:segment)', 'OrderController::show/$1');
-        $routes->post('order', 'OrderController::create');
-        $routes->put('order', 'OrderController::update');
-        $routes->delete('order/(:segment)', 'OrderController::delete/$1');
+        $routes->get('shipping', 'ShippingController::index');
+        $routes->get('shipping/(:segment)', 'ShippingController::show/$1');
+        $routes->post('shipping', 'ShippingController::create');
+        $routes->put('shipping', 'ShippingController::update');
+        $routes->delete('shipping/(:segment)', 'ShippingController::delete/$1');
     }
 );
 
@@ -56,11 +56,11 @@ $routes->group(
         'filter'    => 'userDtm'
     ],
     function (\CodeIgniter\Router\RouteCollection $routes) {
-        $routes->post('order/list', 'OrderController::index');
-        $routes->post('order/show', 'OrderController::show');
-        $routes->post('order/create', 'OrderController::create');
-        $routes->post('order/update', 'OrderController::update');
-        $routes->post('order/delete', 'OrderController::delete');
+        $routes->post('shipping/list', 'ShippingController::index');
+        $routes->post('shipping/show', 'ShippingController::show');
+        $routes->post('shipping/create', 'ShippingController::create');
+        $routes->post('shipping/update', 'ShippingController::update');
+        $routes->post('shipping/delete', 'ShippingController::delete');
     }
 );
 

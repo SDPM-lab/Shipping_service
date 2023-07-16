@@ -4,28 +4,35 @@ namespace App\Entities\v1;
 
 use CodeIgniter\Entity\Entity;
 
-class OrderEntity extends Entity
+class HistoryEntity extends Entity
 {
     /**
-     * 訂單主鍵
+     * 歷史訂單運送主鍵
      *
-     * @var string
+     * @var int
+     */
+    protected $h_key;
+
+    /**
+     * 運送外來鍵
+     *
+     * @var int
+     */
+    protected $s_key;
+
+    /**
+     * 訂單外來鍵
+     *
+     * @var int
      */
     protected $o_key;
 
     /**
-     * 使用者外來鍵
+     * 運送狀態
      *
-     * @var int
+     * @var string
      */
-    protected $u_key;
-
-    /**
-     * 折扣
-     *
-     * @var int
-     */
-    protected $discount;
+    protected $status;
 
     /**
      * 建立時間

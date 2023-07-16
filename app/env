@@ -37,8 +37,8 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = order_DB
-# database.default.database = order
+# database.default.hostname = shipping_DB
+# database.default.database = shipping
 # database.default.username = root
 # database.default.password = root
 # database.default.DBDriver = Postgre

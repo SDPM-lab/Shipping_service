@@ -1,4 +1,4 @@
-# order_service
+# shipping_service
 Demo service in microservice architecture
 
 ## 指令
@@ -10,35 +10,35 @@ Demo service in microservice architecture
 `docker-composer down`
 
 ### 初始化安裝依賴（安裝依賴後須重啟容器）
-`docker-compose exec order-service composer install`
+`docker-compose exec shipping-service composer install`
 `docker-compose restart`
 
 ### 初始化資料庫
-`docker-compose exec order-service php public/index.php init db`
+`docker-compose exec shipping-service php public/index.php init db`
 
 ### 修復資料表自動遞增主鍵問題
 #### V1 資料表
-`docker-compose exec order-service php public/index.php fix v1PK`
+`docker-compose exec shipping-service php public/index.php fix v1PK`
 #### V2 資料表
-`docker-compose exec order-service php public/index.php fix v2PK`
+`docker-compose exec shipping-service php public/index.php fix v2PK`
 
 ### 遷移資料庫結構到最新
-`docker-compose exec order-service php spark migrate`
+`docker-compose exec shipping-service php spark migrate`
 
 ### 執行資料表資料填充
-`docker-compose exec order-service php spark db:seed Order`
+`docker-compose exec shipping-service php spark db:seed ShippingSeeder`
 
 ### 還原資料庫遷移至最舊
-`docker-compose exec order-service php spark migrate:refresh`
+`docker-compose exec shipping-service php spark migrate:refresh`
 
 ### 更新 API 結構檔案
-`docker-compose exec order-service php spark api:update`
+`docker-compose exec shipping-service php spark api:update`
 
 ### 清除快取
-`docker-compose exec order-service php spark cache:clear`
+`docker-compose exec shipping-service php spark cache:clear`
 
 ### API 結構檔案更新
-`docker-compose exec order-service php spark api:update`
+`docker-compose exec shipping-service php spark api:update`
 
 ### 執行單元測試
-`docker-compose exec order-service vendor/bin/phpunit`
+`docker-compose exec shipping-service vendor/bin/phpunit`

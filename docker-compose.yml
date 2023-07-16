@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-    order-service:
+    shipping-service:
         image: webdevops/php:8.1
         ports:
-            - 8082:8080
+            - 8085:8080
         working_dir: /app
         environment: 
             - WEB_DOCUMENT_ROOT=/app/public
@@ -16,28 +16,28 @@ services:
             - './app:/app'
         command: >
             bash -c "./rr serve"
-    order_DB:
+    shipping_DB:
         image: postgres:11.12
         environment:
-            POSTGRES_DB: order
+            POSTGRES_DB: shipping
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root
         ports:
-            - 8320:5432
+            - 8350:5432
         volumes:
-            - order-db-data:/var/lib/postgresql/data/
+            - shipping-db-data:/var/lib/postgresql/data/
         command: ["postgres", "-c", "logging_collector=on", "-c", "log_destination=stderr", "-c", "max_connections=10000"]
-    order_test_DB:
+    shipping_test_DB:
         image: postgres:11.12
         environment:
-            POSTGRES_DB: order
+            POSTGRES_DB: shipping
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root
         ports:
-            - 8321:5432
+            - 8351:5432
         volumes:
-            - order-test-db-data:/var/lib/postgresql/data/
+            - shipping-test-db-data:/var/lib/postgresql/data/
         command: ["postgres", "-c", "logging_collector=on", "-c", "log_destination=stderr", "-c", "max_connections=10000"]
 volumes:
-    order-db-data:
-    order-test-db-data:
+    shipping-db-data:
+    shipping-test-db-data:

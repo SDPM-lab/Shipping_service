@@ -4,28 +4,28 @@ namespace App\Entities\v1;
 
 use CodeIgniter\Entity\Entity;
 
-class OrderProductEntity extends Entity
+class ShippingEntity extends Entity
 {
     /**
-     * 訂單主鍵
+     * 運送主鍵
      *
-     * @var string
+     * @var int
+     */
+    protected $s_key;
+
+    /**
+     * 訂單外來鍵
+     *
+     * @var int
      */
     protected $o_key;
 
     /**
-     * 產品外來鍵
+     * 運送狀態
      *
-     * @var int
+     * @var string
      */
-    protected $p_key;
-
-    /**
-     * 產品當下價錢
-     *
-     * @var int
-     */
-    protected $price;
+    protected $status;
 
     /**
      * 建立時間
@@ -55,8 +55,7 @@ class OrderProductEntity extends Entity
     ];
 
     protected $casts = [
-        'o_key' => 'string',
-        'p_key' => 'integer'
+        'o_key' => 'string'
     ];
 
     protected $dates = []; 
