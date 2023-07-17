@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+    shipping-service:
+        image: webdevops/php:8.1
+        ports:
+            - 8085:8080
+        working_dir: /app
+        environment: 
+            - WEB_DOCUMENT_ROOT=/app/public
+            - PHP_MEMORY_LIMIT=512M
+            - PHP_MAX_EXECUTION_TIME=30
+            - PHP_POST_MAX_SIZE=20M
+            - PHP_UPLOAD_MAX_FILESIZE=20M
+        volumes:
+            - './app:/app'
+        command: >
+            bash -c "./rr serve"
+    shipping_DB:
+        image: postgres:11.12
+        environment:
+            POSTGRES_DB: shipping
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        ports:
+            - 8350:5432
+        volumes:
+            - shipping-db-data:/var/lib/postgresql/data/
+        command: ["postgres", "-c", "logging_collector=on", "-c", "log_destination=stderr", "-c", "max_connections=10000"]
+    shipping_test_DB:
+        image: postgres:11.12
+        environment:
+            POSTGRES_DB: shipping
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        ports:
+            - 8351:5432
+        volumes:
+            - shipping-test-db-data:/var/lib/postgresql/data/
+        command: ["postgres", "-c", "logging_collector=on", "-c", "log_destination=stderr", "-c", "max_connections=10000"]
+volumes:
+    shipping-db-data:
+    shipping-test-db-data:
